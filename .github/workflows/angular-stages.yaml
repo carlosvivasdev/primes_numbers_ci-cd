@@ -1,0 +1,10 @@
+name: Angular stages
+on:
+ push:
+  paths:
+    - '.github/workflows/angular-stages.yaml'
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hola mundo"
