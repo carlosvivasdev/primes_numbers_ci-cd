@@ -12,7 +12,7 @@ RUN mvn dependency:go-offline
 
 # 
 COPY src ./src
-RUN mvm clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 #--------------------- Stage 2 ----------------------------
 
