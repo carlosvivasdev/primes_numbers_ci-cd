@@ -1,7 +1,7 @@
 #------------- DockerFile Sring boot -------------
 
 # Entorno maven
-FROM maven:3.8.6-eclipse-temurin-17 AS build
+FROM maven:3.8.6-eclipse-temurin-21 AS build
 
 # Directorio de trabajo
 WORKDIR /app
@@ -17,7 +17,7 @@ RUN mvn clean package -DskipTests
 #--------------------- Stage 2 ----------------------------
 
 # Entorno eclipse-temurin
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:21-jdk-jammy
 
 # Directorio de trabajo
 WORKDIR /app
