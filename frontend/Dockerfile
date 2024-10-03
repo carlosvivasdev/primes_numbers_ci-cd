@@ -10,15 +10,17 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instalar dependencias
+RUN npm ci
+RUN npm install -g nodemon
 RUN npm install
 
 # Copiar el resto del codigo de Angular
-COPY . .
+COPY ./ ./
 
 # Compilar la aplicacion
-RUN npm run build --prod
+RUN npm build
 
-#-------------------------------------------------
+#--------------------- Stage 2 ----------------------------
 
 # Entorno NGINX
 FROM nginx:alpine
