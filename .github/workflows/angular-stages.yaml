@@ -10,10 +10,19 @@ jobs:
     permissions: write-all
     steps:
       - uses: actions/checkout@v4
-      - name: Login a GitHub Container Register
+      - name: Login to GitHub Container Register
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_TOKEN }}
+      - name: Build and push Front to docker
+        uses: docker/build-push-action@v3
+        with:
+          file: ./frontend/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/api_dash:${{ github.sha }}
+            ghcr.io/${{ github.repository }}/api_dash:latest
+          context: ./frontend
     
