@@ -1,0 +1,28 @@
+name: Spring stages
+on:
+ push:
+  paths:
+    - '.github/workflows/spring-stages.yaml'
+    - "backend/**"
+jobs:
+  build-angular:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+      - name: Login to GitHub Container Register
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+      - name: Build and push Front to docker
+        uses: docker/build-push-action@v3
+        with:
+          file: ./backend/Dockerfile
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}/spring:${{ github.sha }}
+            ghcr.io/${{ github.repository }}/spring:latest
+          context: ./backend
+    
