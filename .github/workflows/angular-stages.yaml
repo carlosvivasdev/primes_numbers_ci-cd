@@ -3,8 +3,17 @@ on:
  push:
   paths:
     - '.github/workflows/angular-stages.yaml'
+    - "frontend/**"
 jobs:
   build-angular:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
-      - run: echo "Hola mundo"
+      - uses: actions/checkout@v4
+      - name: Login a GitHub Container Register
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GH_TOKEN }}
+    
