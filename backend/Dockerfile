@@ -1,7 +1,7 @@
 #------------- DockerFile Sring boot -------------
 
 # Entorno maven
-FROM eclipse-temurin:21-jdk-jammy AS build
+FROM maven:3.9.9-sapmachine-21 AS build
 
 # Directorio de trabajo
 WORKDIR /app

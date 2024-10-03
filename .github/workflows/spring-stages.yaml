@@ -5,7 +5,7 @@ on:
     - '.github/workflows/spring-stages.yaml'
     - "backend/**"
 jobs:
-  build-angular:
+  build-spring:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
