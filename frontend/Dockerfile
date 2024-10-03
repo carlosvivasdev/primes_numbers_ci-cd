@@ -18,7 +18,7 @@ RUN npm install
 COPY ./ ./
 
 # Compilar la aplicacion
-RUN npm build
+RUN npm run build
 
 #--------------------- Stage 2 ----------------------------
 
